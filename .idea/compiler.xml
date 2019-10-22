@@ -7,17 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sentinel-apollo" />
+        <module name="sentinel-nacos" />
         <module name="spring-cloud-alibaba" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="sentinel-apollo" target="1.8" />
+      <module name="sentinel-nacos" target="1.8" />
       <module name="spring-cloud-alibaba" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="sentinel-apollo" options="" />
+      <module name="sentinel-nacos" options="" />
       <module name="spring-cloud-alibaba" options="" />
     </option>
   </component>

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/sentinel-apollo/sentinel-apollo.iml" filepath="$PROJECT_DIR$/sentinel-apollo/sentinel-apollo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sentinel-nacos/sentinel-nacos.iml" filepath="$PROJECT_DIR$/sentinel-nacos/sentinel-nacos.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba.iml" />
     </modules>
   </component>

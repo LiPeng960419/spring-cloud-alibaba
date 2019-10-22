@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>sentinel-dashboard</artifactId>
-    <packaging>jar</packaging>
+    <name>sentinel-apollo</name>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -147,7 +147,7 @@
                 <version>${spring.boot.version}</version>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>com.alibaba.csp.sentinel.dashboard.DashboardApplication</mainClass>
+                    <mainClass>com.alibaba.csp.sentinel.dashboard.ApolloDashboardApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

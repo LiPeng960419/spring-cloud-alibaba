@@ -3,5 +3,6 @@
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sentinel-apollo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sentinel-nacos" charset="UTF-8" />
   </component>
 </project>
