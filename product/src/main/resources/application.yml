@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-alibaba?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true
+    username: root
+  jpa:
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        format_sql: true
+        hbm2ddl:
+          auto: update
+        show_sql: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 39.97.99.155

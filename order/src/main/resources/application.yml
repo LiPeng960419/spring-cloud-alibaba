@@ -1,0 +1,32 @@
+server:
+  port: 9091
+spring:
+  application:
+    name: order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-alibaba?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true
+    username: root
+  jpa:
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        format_sql: true
+        hbm2ddl:
+          auto: update
+        show_sql: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 39.97.99.155
+
+  #NFLoadBalancerClassName: 配置ILoadBalancer的实现类
+  #NFLoadBalancerRuleClassName: 配置IRule的实现类
+  #NFLoadBalancerPingClassName: 配置IPing的实现类
+  #NFWSServerListClassName: 配置ServerList的实现类
+  #NIWSServerListFilterClassName: 配置ServerListFilter的实现类
+product: #服务提供者的名称
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #找AbstractLoadBalancerRule子类
