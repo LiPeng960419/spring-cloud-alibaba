@@ -6,7 +6,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     password: root
-    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-alibaba?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-alibaba?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
     username: root
   jpa:
     open-in-view: true
@@ -21,3 +21,13 @@ spring:
     nacos:
       discovery:
         server-addr: 39.97.99.155
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080 #控制台服务地址
+        port: 8719  #跟控制台交流的端口 随意指定未使用的即可
+      datasource:
+        nacos:
+          dataId: ${spring.application.name}-sentinel
+          groupId: DEFAULT_GROUP
+          rule-type: flow
+          server-addr: 39.97.99.155:8848
