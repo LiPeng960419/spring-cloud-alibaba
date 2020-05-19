@@ -5,6 +5,7 @@ import com.lipeng.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -41,6 +42,11 @@ public class SentinelController {
     public String message3(String name, Integer age) {
         log.info(name + "," + age);
         return "message3:" + name + "," + age;
+    }
+
+    @GetMapping("/order/message4")
+    public String message4(@RequestParam String param) {
+        return orderService.testSentinelResource(param);
     }
 
 }
