@@ -4,9 +4,9 @@ spring:
   application:
     name: product
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     password: root
-    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-alibaba?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/spring-cloud-alibaba?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
   jpa:
     open-in-view: true
