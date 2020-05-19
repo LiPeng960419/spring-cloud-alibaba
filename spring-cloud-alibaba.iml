@@ -47,32 +47,11 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.0.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.0.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.0.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-alibaba-sentinel:0.9.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-alibaba-sentinel:0.9.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-web-servlet:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-core:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-transport-simple-http:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-transport-common:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-datasource-extension:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-annotation-aspectj:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.13" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-parameter-flow-control:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-cluster-server-default:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-cluster-common-default:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.25.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.25.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.25.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.25.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.25.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.25.Final" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-cluster-client-default:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-alibaba-sentinel-datasource:0.9.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery:0.9.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-alibaba-nacos-discovery:0.9.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-client:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-common:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:2.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.cloud:spring-cloud-alibaba-nacos-discovery:2.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-client:1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-common:1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-api:1.1.4" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient:0.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.0.2.RELEASE" level="project" />
@@ -92,6 +71,29 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.netflix.netflix-commons:netflix-commons-util:0.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.ribbon:ribbon-loadbalancer:2.2.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.netflix.netflix-commons:netflix-statistics:0.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel:2.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.cloud:spring-cloud-alibaba-sentinel:2.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-transport-simple-http:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-transport-common:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-datasource-extension:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-annotation-aspectj:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-core:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.13" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-web-servlet:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-spring-webflux-adapter:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-reactor-adapter:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-parameter-flow-control:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-cluster-server-default:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-cluster-common-default:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.csp:sentinel-cluster-client-default:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba.cloud:spring-cloud-alibaba-sentinel-datasource:2.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.7.RELEASE" level="project" />

@@ -23,7 +23,7 @@ spring:
         server-addr: 39.97.99.155
     sentinel:
       transport:
-        dashboard: 127.0.0.1:8080 #控制台服务地址
+        dashboard: 10.9.216.1:9090 #控制台服务地址
         port: 8720  #跟控制台交流的端口 随意指定未使用的即可
       datasource:
         nacos:
