@@ -22,6 +22,8 @@ spring:
       discovery:
         server-addr: 39.97.99.155
     sentinel:
+      filter:
+        enabled: false #关闭commonfilter实例化   实现关联资源限流
       transport:
         dashboard: 10.9.216.1:9090 #控制台服务地址
         port: 8720  #跟控制台交流的端口 随意指定未使用的即可
