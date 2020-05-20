@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: shop-order
+  zipkin:
+    base-url: http://10.9.216.1:9411/ #server请求地址
+    discovery-client-enabled: false # 让nacos把它当成一个url 不当做服务
+    sleuth:
+      sampler:
+        probability: 1.0 #采样百分比
   jackson:
     time-zone: Asia/Shanghai
     date-format: yyyy-MM-dd HH:mm:ss
