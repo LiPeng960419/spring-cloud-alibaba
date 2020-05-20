@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EntityScan("com.lipeng.domain")
 @ComponentScan(basePackages = "com.lipeng")
-@EnableFeignClients(basePackages = "com.lipeng.fegin")
+@EnableFeignClients(basePackages = "com.lipeng.feign")
 @EnableDiscoveryClient
 public class OrderApplication {
 

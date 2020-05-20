@@ -1,5 +1,6 @@
 package com.lipeng.product.controller;
 
+import com.lipeng.common.ResultVo;
 import com.lipeng.domain.Product;
 import com.lipeng.product.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +21,10 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/product/{id}")
-    public Product id(@PathVariable Integer id) {
+    public ResultVo<Product> id(@PathVariable Integer id) {
         log.info("查询商品信息id：{}", id);
         Product product = productService.findById(id);
-        return product;
+        return ResultVo.success(product);
     }
 
 }
