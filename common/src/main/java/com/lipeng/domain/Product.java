@@ -1,5 +1,7 @@
 package com.lipeng.domain;
 
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,5 +27,8 @@ public class Product {
     private Integer stock;
 
     private Long price; // 分
+
+    @Column(name = "create_time")
+    private Date createTime;
 
 }

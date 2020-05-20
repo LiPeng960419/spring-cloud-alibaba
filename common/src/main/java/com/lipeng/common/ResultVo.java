@@ -68,4 +68,13 @@ public class ResultVo<T> {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "ResultVo{" +
+                "returnCode='" + returnCode + '\'' +
+                ", returnMsg='" + returnMsg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
 }
