@@ -39,8 +39,8 @@ public class OrderController {
     @GetMapping("/order/create/fegin/{id}")
     public ResultVo fegin(@PathVariable Integer id) {
         log.info("查询商品信息id：{}", id);
-        ResultVo resultVo = productFeignSerivce.findById(id);
-        Product p = (Product) resultVo.getData();
+        ResultVo<Product> resultVo = productFeignSerivce.findById(id);
+        Product p = resultVo.getData();
         log.info("product:{}", p);
         Order order = new Order();
         order.setName(p.getName());
@@ -49,6 +49,9 @@ public class OrderController {
         return ResultVo.success(order);
     }
 
+    /*
+    发现使用Ribbon的时候，必须要在RestTemplate bean配置中添加负载均衡注解@LoadBalanced
+     */
     @GetMapping("/order/create/ribbon/{id}")
     public ResultVo ribbon(@PathVariable Integer id) {
         log.info("查询商品信息id：{}", id);
@@ -61,13 +64,17 @@ public class OrderController {
         return ResultVo.success(order);
     }
 
+    /*
+    加了了注解 @LoadBalanced 之后，我们的restTemplate 会走这个类RibbonLoadBalancerClient
+    这里通过instance查询的时候 不能加上@LoadBalanced
+     */
     @GetMapping("/order/create/{id}")
     public ResultVo create(@PathVariable Integer id) {
         log.info("查询商品信息id：{}", id);
         List<ServiceInstance> productRpc = discoveryClient.getInstances("product");
         ServiceInstance instance = productRpc.get(new Random().nextInt(productRpc.size()));
-        ResultVo vo = restTemplate.getForObject("http://" + instance.getHost() + ":" + instance.getPort() + "/product/" + id, ResultVo.class);
-        log.info("ServiceInstance:{}", vo.getData());
+        Product product = restTemplate.getForObject("http://" + instance.getHost() + ":" + instance.getPort() + "/product/findbyId/" + id, Product.class);
+        log.info("ServiceInstance:{}", product);
         Product p = restTemplate.getForObject("http://127.0.0.1:8081/product/findbyId/" + id, Product.class);
         log.info("product:{}", p);
         Order order = new Order();
