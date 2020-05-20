@@ -22,4 +22,9 @@ public class ProductServiceImpl implements ProductService {
         return Optional.of(productDao.findById(id)).get().orElseGet(null);
     }
 
+    @Override
+    public void save(Product product) {
+        productDao.save(product);
+    }
+
 }

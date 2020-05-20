@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,6 +55,13 @@ public class ProductController {
     @GetMapping("/product/dateTest")
     public ResultVo findById(@RequestParam Date date) {
         log.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+        return ResultVo.success();
+    }
+
+    @PostMapping("/product/save")
+    public ResultVo save(@RequestBody Product product) {
+        product.setCreateTime(new Date());
+        productService.save(product);
         return ResultVo.success();
     }
 
