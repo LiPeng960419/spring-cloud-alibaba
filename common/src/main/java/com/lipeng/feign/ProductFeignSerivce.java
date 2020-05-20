@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * fallback fallbackFactory二选一
  */
 @FeignClient(value = "product",
-        fallback = ProductFeignSerivceFallback.class,
+        //fallback = ProductFeignSerivceFallback.class,
         fallbackFactory = ProductFeignSerivceFallbackFactory.class)
 public interface ProductFeignSerivce {
 

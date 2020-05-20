@@ -2,6 +2,8 @@ package com.lipeng.fallback;
 
 import com.lipeng.common.ResultVo;
 import com.lipeng.domain.Product;
+import com.lipeng.feign.ProductFeignSerivce;
+import feign.hystrix.FallbackFactory;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,13 +23,13 @@ public class ProductFeignSerivceFallbackFactory implements FallbackFactory<Produ
             @Override
             public ResultVo<Product> findById(Integer id) {
                 log.error("ProductFeignSerivce findById error", throwable);
-                return ResultVo.fail("Product findById fail");
+                return ResultVo.fail("ProductFeignSerivceFallbackFactory Product findById fail");
             }
 
             @Override
             public ResultVo dateTest(Date date) {
                 log.error("ProductFeignSerivce dateTest error", throwable);
-                return ResultVo.fail("dateTest fail");
+                return ResultVo.fail("ProductFeignSerivceFallbackFactory dateTest fail");
             }
         };
     }
