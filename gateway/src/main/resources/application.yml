@@ -27,6 +27,7 @@ spring:
             - Path=/api/product/**
           filters:
             - StripPrefix=1
+            - Log=false,true  #局部过滤器
         - id: order_route
           #127.0.1.1:7000/api/order/message0 lb://shop-order/order/message0
           uri: lb://shop-order
@@ -34,6 +35,7 @@ spring:
             - Path=/api/order/**
           filters:
             - StripPrefix=1
+            - Log=true,false  #局部过滤器
     sentinel:
       transport:
         dashboard: 10.9.216.1:9090 #控制台服务地址
