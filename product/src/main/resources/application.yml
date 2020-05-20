@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: product
+    name: shop-product
   jackson:
     time-zone: Asia/Shanghai
     date-format: yyyy-MM-dd HH:mm:ss

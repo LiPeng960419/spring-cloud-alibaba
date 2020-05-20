@@ -1,0 +1,47 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: shop-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 39.97.99.155
+    gateway:
+      discovery:
+        locator:
+          enabled: true #允许gateway从nacos发现微服务
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求
+            allowedOrigins: "*" #跨域处理 允许所有的域
+            allowedMethods: # 支持的方法
+              - GET
+              - POST
+              - PUT
+              - DELETE
+      routes:
+        - id: product_route
+          uri: lb://shop-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - StripPrefix=1
+        - id: order_route
+          #127.0.1.1:7000/api/order/message0 lb://shop-order/order/message0
+          uri: lb://shop-order
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - StripPrefix=1
+    sentinel:
+      transport:
+        dashboard: 10.9.216.1:9090 #控制台服务地址
+        port: 8721  #跟控制台交流的端口 随意指定未使用的即可
+management:
+  endpoint:
+    gateway:
+      enabled: true
+    web:
+      exposure:
+        include: true

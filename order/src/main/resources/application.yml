@@ -2,7 +2,7 @@ server:
   port: 9091
 spring:
   application:
-    name: order
+    name: shop-order
   jackson:
     time-zone: Asia/Shanghai
     date-format: yyyy-MM-dd HH:mm:ss
