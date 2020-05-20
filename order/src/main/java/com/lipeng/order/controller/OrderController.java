@@ -40,6 +40,9 @@ public class OrderController {
     public ResultVo fegin(@PathVariable Integer id) {
         log.info("查询商品信息id：{}", id);
         ResultVo<Product> resultVo = productFeignSerivce.findById(id);
+        if (!"200".equals(resultVo.getReturnCode())){
+            return ResultVo.fail(resultVo.getReturnMsg());
+        }
         Product p = resultVo.getData();
         log.info("product:{}", p);
         Order order = new Order();
