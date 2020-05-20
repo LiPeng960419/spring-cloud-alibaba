@@ -52,8 +52,7 @@ public class OrderController {
     @GetMapping("/order/create/ribbon/{id}")
     public ResultVo ribbon(@PathVariable Integer id) {
         log.info("查询商品信息id：{}", id);
-        ResultVo resultVo = restTemplate.getForObject("http://product/product/" + id, ResultVo.class);
-        Product p = (Product) resultVo.getData();
+        Product p = restTemplate.getForObject("http://product/product/findbyId/" + id, Product.class);
         log.info("product:{}", p);
         Order order = new Order();
         order.setName(p.getName());
@@ -69,8 +68,7 @@ public class OrderController {
         ServiceInstance instance = productRpc.get(new Random().nextInt(productRpc.size()));
         ResultVo vo = restTemplate.getForObject("http://" + instance.getHost() + ":" + instance.getPort() + "/product/" + id, ResultVo.class);
         log.info("ServiceInstance:{}", vo.getData());
-        ResultVo resultVo = restTemplate.getForObject("http://127.0.0.1:8081/product/" + id, ResultVo.class);
-        Product p = (Product) resultVo.getData();
+        Product p = restTemplate.getForObject("http://127.0.0.1:8081/product/findbyId/" + id, Product.class);
         log.info("product:{}", p);
         Order order = new Order();
         order.setName(p.getName());

@@ -27,4 +27,10 @@ public class ProductController {
         return ResultVo.success(product);
     }
 
+    @GetMapping("/product/findbyId/{id}")
+    public Product findbyId(@PathVariable Integer id) {
+        Product product = productService.findById(id);
+        return product;
+    }
+
 }
