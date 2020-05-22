@@ -8,6 +8,7 @@ import com.lipeng.feign.ProductFeignSerivce;
 import com.lipeng.order.dao.OrderDao;
 import com.lipeng.order.service.OrderService;
 import com.lipeng.order.service.fallback.OrderServiceFallback;
+import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @GlobalTransactional
     public ResultVo createOrder(Integer id) {
+        log.info("当前 XID: {}", RootContext.getXID());
         ResultVo<Product> resultVo = productFeignSerivce.findById(id);
         if (!"200".equals(resultVo.getReturnCode())) {
             return ResultVo.fail(null);

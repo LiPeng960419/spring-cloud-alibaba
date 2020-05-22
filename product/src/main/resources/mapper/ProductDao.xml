@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lipeng.product.dao.ProductDao">
+
+    <resultMap id="ProductResultMap" type="Product">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="save" parameterType="Product">
+        insert into t_product(id,name,price,stock,create_time)
+        value (null,#{name},#{price},#{stock},#{createTime})
+    </insert>
+
+    <select id="findById" parameterType="int" resultMap="ProductResultMap">
+        select id,name,price,stock,create_time from  t_product
+        where id = #{id}
+    </select>
+
+    <update id="desProductCount">
+        update t_product c set c.stock = #{stock} where c.id = #{id}
+    </update>
+
+</mapper>
