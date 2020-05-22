@@ -36,9 +36,7 @@ public class ProductServiceImpl implements ProductService {
         if (product == null) {
             return 0;
         }
-        product.setStock(product.getStock() - 1);
-        productDao.save(product);
-        return 1;
+        return productDao.desProductCount(product.getId(), product.getStock() - 1);
     }
 
 }
