@@ -1,3 +1,18 @@
 java -Dserver.port=9090 -Dcsp.sentinel.dashboard.server=10.9.216.1:9090 -Dproject.name=sentinel-dashboard-1.7.0 -jar  sentinel-dashboard-1.7.0.jar &
 
 java -jar zipkin-server-2.19.3-exec.jar --STORAGE_TYPE=elasticsearch --ES-HOST=10.9.216.1:9200 &
+
+#UNDO_LOG
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `context` varchar(128) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  `ext` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
