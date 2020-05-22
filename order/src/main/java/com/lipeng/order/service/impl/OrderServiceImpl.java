@@ -56,19 +56,29 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @GlobalTransactional
     public ResultVo createOrder(Integer id) {
-        log.info("当前 XID: {}", RootContext.getXID());
-        ResultVo<Product> resultVo = productFeignSerivce.findById(id);
-        if (!"200".equals(resultVo.getReturnCode())) {
-            return ResultVo.fail(null);
+        try {
+            log.info("当前 XID: {}", RootContext.getXID());
+            ResultVo<Product> resultVo = productFeignSerivce.findById(id);
+            if (!"200".equals(resultVo.getReturnCode())) {
+                return ResultVo.fail("查询商品信息失败");
+            }
+            Product p = resultVo.getData();
+            log.info("product:{}", p);
+            Order order = new Order();
+            order.setName(p.getName());
+            order.setPrice(p.getPrice());
+            orderDao.save(order);
+            ResultVo desResultVo = productFeignSerivce.desProductCount(p);
+            if (!"200".equals(desResultVo.getReturnCode())) {
+                throw new RuntimeException("库存修改失败啦,回滚");
+            }
+            if (id.equals(1)){
+                throw new RuntimeException("手动测试回滚");
+            }
+            return ResultVo.success(order);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
         }
-        Product p = resultVo.getData();
-        log.info("product:{}", p);
-        Order order = new Order();
-        order.setName(p.getName());
-        order.setPrice(p.getPrice());
-        orderDao.save(order);
-        productFeignSerivce.desProductCount(p);
-        return ResultVo.success(order);
     }
 
     // 返回值 参数和原方法一致

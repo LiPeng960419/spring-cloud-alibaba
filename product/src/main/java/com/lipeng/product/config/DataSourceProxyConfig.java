@@ -12,14 +12,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @Author: lipeng 910138
  * @Date: 2020/5/22 17:10
  */
 @Configuration
-@EnableTransactionManagement
 public class DataSourceProxyConfig {
 
     @Value("${mybatis.mapper-locations}")
@@ -55,8 +53,7 @@ public class DataSourceProxyConfig {
         factoryBean.setDataSource(dataSourceProxy);
         // 加载全局的配置文件
         factoryBean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(configLocation));
-        factoryBean.setMapperLocations(
-                new PathMatchingResourcePatternResolver().getResources(mapperLocations));
+        factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocations));
         factoryBean.setTransactionFactory(new SpringManagedTransactionFactory());
         return factoryBean.getObject();
     }

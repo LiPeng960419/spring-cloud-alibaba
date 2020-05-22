@@ -4,8 +4,15 @@
 
 <mapper namespace="com.lipeng.order.dao.OrderDao">
 
-    <insert id="save" parameterType="Order">
-        insert into t_order(id,name,price) value (null,#{name},#{price})
+    <insert id="save" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+        insert into t_order(id,name,price) value (#{id},#{name},#{price})
     </insert>
+
+    <!--<insert id="save" parameterType="Order">-->
+        <!--<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">-->
+            <!--SELECT LAST_INSERT_ID() AS id-->
+        <!--</selectKey>-->
+        <!--insert into t_order(id,name,price) value (#{id},#{name},#{price})-->
+    <!--</insert>-->
 
 </mapper>
