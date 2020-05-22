@@ -1,47 +1,47 @@
-server:
-  port: 8901
-spring:
-  application:
-    name: shop-canal
-  zipkin:
-    base-url: http://10.9.216.1:9411/ #server请求地址
-    discovery-client-enabled: false # 让nacos把它当成一个url 不当做服务
-    sleuth:
-      sampler:
-        probability: 1.0 #采样百分比
-  jackson:
-    time-zone: Asia/Shanghai
-    date-format: yyyy-MM-dd HH:mm:ss
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 39.97.99.155
-    sentinel:
-      filter:
-        enabled: false #关闭commonfilter实例化   实现关联资源限流
-      transport:
-        dashboard: 10.9.216.1:9090 #控制台服务地址
-        port: 8721  #跟控制台交流的端口 随意指定未使用的即可
-      datasource:
-        ds:
-          nacos:
-            server-addr: 39.97.99.155:8848
-            dataId: ${spring.application.name}-sentinel
-            groupId: DEFAULT_GROUP
-            rule-type: flow
-            dataType: json
-#开启feign对sentinel的支持
-feign:
-  sentinel:
-    enabled: true
-canal:
-  client:
-    instances:
-      example:
-        host: 39.97.99.155
-        port: 11111
-        batchSize: 1000
-        zookeeperAddress:
-          - 10.9.216.1:2181
-          - 10.9.217.3:2181
-          - 10.9.216.14:2181
+#server:
+#  port: 8901
+#spring:
+#  application:
+#    name: shop-canal
+#  zipkin:
+#    base-url: http://10.9.216.1:9411/ #server请求地址
+#    discovery-client-enabled: false # 让nacos把它当成一个url 不当做服务
+#    sleuth:
+#      sampler:
+#        probability: 1.0 #采样百分比
+#  jackson:
+#    time-zone: Asia/Shanghai
+#    date-format: yyyy-MM-dd HH:mm:ss
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 39.97.99.155
+#    sentinel:
+#      filter:
+#        enabled: false #关闭commonfilter实例化   实现关联资源限流
+#      transport:
+#        dashboard: 10.9.216.1:9090 #控制台服务地址
+#        port: 8721  #跟控制台交流的端口 随意指定未使用的即可
+#      datasource:
+#        ds:
+#          nacos:
+#            server-addr: 39.97.99.155:8848
+#            dataId: ${spring.application.name}-sentinel
+#            groupId: DEFAULT_GROUP
+#            rule-type: flow
+#            dataType: json
+##开启feign对sentinel的支持
+#feign:
+#  sentinel:
+#    enabled: true
+#canal:
+#  client:
+#    instances:
+#      example:
+#        host: 39.97.99.155
+#        port: 11111
+#        batchSize: 1000
+#        zookeeperAddress:
+#          - 10.9.216.1:2181
+#          - 10.9.217.3:2181
+#          - 10.9.216.14:2181

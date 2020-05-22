@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: shop-canal
+  profiles:
+    active: dev
+  #开发环境 nacos dataId = spring.application.name + "-" + avtive + "." + file-extension
+  # 没有active时    dataId = spring.application.name + "." + file-extension
+  cloud:
+    nacos:
+      config:
+        server-addr: 39.97.99.155:8848
+        file-extension: yaml #默认是properties
+        group: demoGroup
+        prefix: ${spring.application.name}
