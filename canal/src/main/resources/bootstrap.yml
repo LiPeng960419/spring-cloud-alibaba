@@ -12,3 +12,11 @@ spring:
         file-extension: yaml #默认是properties
         group: demoGroup
         prefix: ${spring.application.name}
+        #公共配置
+        ext-config:
+          - data-id: all-service.yaml
+            group: demoGroup
+            refresh: true
+        #下面这种方式不能设置group 默认是 DEFAULT_GROUP
+#        shared-dataids: all-service.yaml
+#        refreshable-dataids: all-service.yaml
