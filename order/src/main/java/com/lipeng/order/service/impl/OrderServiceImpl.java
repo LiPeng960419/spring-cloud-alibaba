@@ -1,11 +1,14 @@
 package com.lipeng.order.service.impl;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.lipeng.common.ResultVo;
 import com.lipeng.domain.Order;
+import com.lipeng.domain.Product;
+import com.lipeng.feign.ProductFeignSerivce;
 import com.lipeng.order.dao.OrderDao;
 import com.lipeng.order.service.OrderService;
 import com.lipeng.order.service.fallback.OrderServiceFallback;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderDao orderDao;
+
+    @Autowired
+    private ProductFeignSerivce productFeignSerivce;
 
     @Override
     public void saveOrder(Order order) {
@@ -44,6 +50,23 @@ public class OrderServiceImpl implements OrderService {
             throw new RuntimeException("param is error");
         }
         return "success";
+    }
+
+    @Override
+    @GlobalTransactional
+    public ResultVo createOrder(Integer id) {
+        ResultVo<Product> resultVo = productFeignSerivce.findById(id);
+        if (!"200".equals(resultVo.getReturnCode())) {
+            return ResultVo.fail(null);
+        }
+        Product p = resultVo.getData();
+        log.info("product:{}", p);
+        Order order = new Order();
+        order.setName(p.getName());
+        order.setPrice(p.getPrice());
+        orderDao.save(order);
+        productFeignSerivce.desProductCount(p);
+        return ResultVo.success(order);
     }
 
     // 返回值 参数和原方法一致

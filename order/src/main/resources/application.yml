@@ -27,6 +27,9 @@ spring:
           auto: update
         show_sql: true
   cloud:
+    alibaba:
+      seata:
+        tx-service-group: shop-order-fescar-service-group
     nacos:
       discovery:
         server-addr: 39.97.99.155
@@ -52,7 +55,6 @@ spring:
 product: #服务提供者的名称
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #找AbstractLoadBalancerRule子类
-
 #开启feign对sentinel的支持
 feign:
   sentinel:

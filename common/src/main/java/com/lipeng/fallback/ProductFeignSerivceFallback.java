@@ -23,4 +23,9 @@ public class ProductFeignSerivceFallback implements ProductFeignSerivce {
         return ResultVo.fail("dateTest fail");
     }
 
+    @Override
+    public ResultVo desProductCount(Product p) {
+        return ResultVo.fail("desProductCount fail");
+    }
+
 }

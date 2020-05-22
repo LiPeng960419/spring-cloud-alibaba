@@ -1,5 +1,6 @@
 package com.lipeng.order.service;
 
+import com.lipeng.common.ResultVo;
 import com.lipeng.domain.Order;
 
 /**
@@ -14,4 +15,5 @@ public interface OrderService {
 
     String testSentinelResource(String param);
 
+    ResultVo createOrder(Integer id);
 }

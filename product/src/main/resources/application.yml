@@ -27,6 +27,9 @@ spring:
           auto: update
         show_sql: true
   cloud:
+    alibaba:
+      seata:
+        tx-service-group: shop-product-fescar-service-group
     nacos:
       discovery:
         server-addr: 39.97.99.155

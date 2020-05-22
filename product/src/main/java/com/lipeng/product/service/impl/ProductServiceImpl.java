@@ -3,7 +3,6 @@ package com.lipeng.product.service.impl;
 import com.lipeng.domain.Product;
 import com.lipeng.product.dao.ProductDao;
 import com.lipeng.product.service.ProductService;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +18,27 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(Integer id) {
-        return Optional.of(productDao.findById(id)).get().orElseGet(null);
+        Product product = productDao.findById(id).get();
+        if (product == null) {
+            return null;
+        }
+        return product;
     }
+
 
     @Override
     public void save(Product product) {
         productDao.save(product);
+    }
+
+    @Override
+    public int desProductCount(Product product) {
+        if (product == null) {
+            return 0;
+        }
+        product.setStock(product.getStock() - 1);
+        productDao.save(product);
+        return 1;
     }
 
 }

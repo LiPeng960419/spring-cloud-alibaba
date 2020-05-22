@@ -65,4 +65,13 @@ public class ProductController {
         return ResultVo.success();
     }
 
+    @GetMapping("/product/desProductCount")
+    public ResultVo desProductCount(@RequestBody Product product) {
+        int i = productService.desProductCount(product);
+        if (i > 0) {
+            return ResultVo.success();
+        }
+        return ResultVo.fail("desProductCount error");
+    }
+
 }

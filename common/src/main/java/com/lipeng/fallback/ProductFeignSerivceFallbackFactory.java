@@ -31,6 +31,11 @@ public class ProductFeignSerivceFallbackFactory implements FallbackFactory<Produ
                 log.error("ProductFeignSerivce dateTest error", throwable);
                 return ResultVo.fail("ProductFeignSerivceFallbackFactory dateTest fail");
             }
+
+            @Override
+            public ResultVo desProductCount(Product p) {
+                return ResultVo.fail("desProductCount fail");
+            }
         };
     }
 
