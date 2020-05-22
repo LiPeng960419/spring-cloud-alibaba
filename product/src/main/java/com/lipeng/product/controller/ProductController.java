@@ -65,7 +65,7 @@ public class ProductController {
         return ResultVo.success();
     }
 
-    @GetMapping("/product/desProductCount")
+    @PostMapping("/product/desProductCount")
     public ResultVo desProductCount(@RequestBody Product product) {
         int i = productService.desProductCount(product);
         if (i > 0) {
