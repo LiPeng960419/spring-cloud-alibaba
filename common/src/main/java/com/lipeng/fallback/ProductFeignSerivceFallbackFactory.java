@@ -4,6 +4,9 @@ import com.lipeng.common.ResultVo;
 import com.lipeng.domain.Product;
 import com.lipeng.feign.ProductFeignSerivce;
 import feign.hystrix.FallbackFactory;
+import io.seata.core.context.RootContext;
+import io.seata.core.exception.TransactionException;
+import io.seata.tm.TransactionManagerHolder;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -34,9 +37,18 @@ public class ProductFeignSerivceFallbackFactory implements FallbackFactory<Produ
 
             @Override
             public ResultVo desProductCount(Product p) {
+                rollbackSeata();
                 return ResultVo.fail("desProductCount fail");
             }
         };
+    }
+
+    private static final void rollbackSeata() {
+        try {
+            TransactionManagerHolder.get().rollback(RootContext.getXID());
+        } catch (TransactionException e) {
+            log.error("rollbackSeata error", e);
+        }
     }
 
 }

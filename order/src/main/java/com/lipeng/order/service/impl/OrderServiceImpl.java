@@ -69,6 +69,8 @@ public class OrderServiceImpl implements OrderService {
             order.setPrice(p.getPrice());
             orderDao.save(order);
             ResultVo desResultVo = productFeignSerivce.desProductCount(p);
+            // 如果通过feign调用后根据返回结果判断是否成功 可以通过抛出异常 回滚全局事务
+            // 如果不判断返回结果且调用服务超时 那就在sentinel fallback里面回滚全局事务
             if (!"200".equals(desResultVo.getReturnCode())) {
                 throw new RuntimeException("库存修改失败啦,回滚");
             }
