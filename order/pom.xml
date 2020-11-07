@@ -36,6 +36,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+            <version>${spring-cloud-alibaba-version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.lipeng.cloud</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>

@@ -11,6 +11,8 @@
         <module>common</module>
         <module>product</module>
         <module>order</module>
+        <module>canal</module>
+        <module>gateway</module>
     </modules>
     <name>spring-cloud-alibaba</name>
     <description>spring-cloud-alibaba</description>
@@ -30,12 +32,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${spring-cloud-alibaba-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
             <version>${spring-cloud-alibaba-version}</version>
         </dependency>
 
