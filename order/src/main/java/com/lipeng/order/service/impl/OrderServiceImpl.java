@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    @GlobalTransactional
+    @GlobalTransactional(name = "order_tx_group")
     public ResultVo createOrder(Integer id) {
         try {
             log.info("当前 XID: {}", RootContext.getXID());

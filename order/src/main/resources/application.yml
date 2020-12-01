@@ -7,7 +7,7 @@ spring:
   application:
     name: shop-order
   zipkin:
-    base-url: http://39.97.99.155:9411/ #server请求地址
+    base-url: http://192.168.7.1:9411/ #server请求地址
     discovery-client-enabled: false # 让nacos把它当成一个url 不当做服务
   sleuth:
     sampler:
@@ -32,20 +32,20 @@ spring:
   cloud:
     alibaba:
       seata:
-        tx-service-group: shop-order-fescar-service-group
+        tx-service-group: order_tx_group
     nacos:
       discovery:
-        server-addr: 39.97.99.155
+        server-addr: 192.168.7.1
     sentinel:
       filter:
         enabled: false #关闭commonfilter实例化   实现关联资源限流
       transport:
-        dashboard: 39.97.99.155:9090 #控制台服务地址
+        dashboard: 192.168.7.1:9090 #控制台服务地址
         port: 8720  #跟控制台交流的端口 随意指定未使用的即可
       datasource:
         ds:
           nacos:
-            server-addr: 39.97.99.155:8848
+            server-addr: 192.168.7.1:8848
             dataId: ${spring.application.name}-sentinel
             groupId: DEFAULT_GROUP
             rule-type: flow

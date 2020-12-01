@@ -1,12 +1,9 @@
-java -Dserver.port=9090 -Dcsp.sentinel.dashboard.server=10.9.216.1:9090 -Dproject.name=sentinel-dashboard-1.7.0 -jar  sentinel-dashboard-1.7.0.jar &
-
-java -jar zipkin-server-2.19.3-exec.jar --STORAGE_TYPE=elasticsearch --ES-HOST=10.9.216.1:9200 &
-
-seata 0.9.0
-必须指定host 不然走内网host
-nohup  ./seata-server.sh -p 8091 -h 192.168.7.1  >log.out 2>1 &
-
-#UNDO_LOG
+-- the table to store seata xid data
+-- 0.7.0+ add context
+-- you must to init this sql for you business databese. the seata server not need it.
+-- 此脚本必须初始化在你当前的业务数据库中，用于AT 模式XID记录。与server端无关（注：业务数据库）
+-- 注意此处0.3.0+ 增加唯一索引 ux_undo_log
+drop table `undo_log`;
 CREATE TABLE `undo_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `branch_id` bigint(20) NOT NULL,
