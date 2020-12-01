@@ -62,6 +62,15 @@ product: #服务提供者的名称
 feign:
   sentinel:
     enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
 ###设置feign客户端超时时间
 ###SpringCloud feign 默认开启支持ribbon
 ###Ribbon超时重试次数（总的请求次数）：（MaxAutoRetries+1）*（MaxAutoRetriesNextServer+1）
