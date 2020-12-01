@@ -53,34 +53,39 @@ public class OrderServiceImpl implements OrderService {
         return "success";
     }
 
+    /**
+     * 不使用hystrix fallback 会自动回滚
+     * 如果使用了hystrix 那么在fallback方法里面要回滚事务
+     * @param id
+     * @return
+     */
     @Override
     @GlobalTransactional(name = "order_tx_group")
     public ResultVo createOrder(Integer id) {
-        try {
-            log.info("当前 XID: {}", RootContext.getXID());
-            ResultVo<Product> resultVo = productFeignSerivce.findById(id);
-            if (!"200".equals(resultVo.getReturnCode())) {
-                return ResultVo.fail("查询商品信息失败");
-            }
-            Product p = resultVo.getData();
-            log.info("product:{}", p);
-            Order order = new Order();
-            order.setName(p.getName());
-            order.setPrice(p.getPrice());
-            orderDao.save(order);
-            ResultVo desResultVo = productFeignSerivce.desProductCount(p);
-            // 如果通过feign调用后根据返回结果判断是否成功 可以通过抛出异常 回滚全局事务
-            // 如果不判断返回结果且调用服务超时 那就在sentinel fallback里面回滚全局事务
-            if (!"200".equals(desResultVo.getReturnCode())) {
-                throw new RuntimeException("库存修改失败啦,回滚");
-            }
-            if (id.equals(1)){
-                throw new RuntimeException("手动测试回滚");
-            }
-            return ResultVo.success(order);
-        }catch (Exception e){
-            throw new RuntimeException(e.getMessage());
+        log.info("当前 XID: {}", RootContext.getXID());
+        ResultVo<Product> resultVo = productFeignSerivce.findById(id);
+        if (!"200".equals(resultVo.getReturnCode())) {
+            return ResultVo.fail("查询商品信息失败");
         }
+        Product p = resultVo.getData();
+        log.info("product:{}", p);
+        Order order = new Order();
+        order.setName(p.getName());
+        order.setPrice(p.getPrice());
+        orderDao.save(order);
+        ResultVo desProductCount = productFeignSerivce.desProductCount(p);
+        if (!"200".equals(desProductCount.getReturnCode())) {
+            return ResultVo.fail("扣库存失败");
+        }
+        // 如果通过feign调用后根据返回结果判断是否成功 可以通过抛出异常 回滚全局事务
+        // 如果不判断返回结果且调用服务超时 那就在sentinel fallback里面回滚全局事务
+//            if (!"200".equals(desResultVo.getReturnCode())) {
+//                throw new RuntimeException("库存修改失败啦,回滚");
+//            }
+//            if (id.equals(1)) {
+//                throw new RuntimeException("手动测试回滚");
+//            }
+        return ResultVo.success(order);
     }
 
     // 返回值 参数和原方法一致

@@ -41,11 +41,11 @@ public class ProductServiceImpl implements ProductService {
             return 0;
         }
         // feign超时
-//        try {
-//            Thread.sleep(1000 * 10);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(1000 * 10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // 先执行sql 再异常
         int result = productDao.desProductCount(product.getId(), product.getStock() - 1);
         // int i = 1 / 0;

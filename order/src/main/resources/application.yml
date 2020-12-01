@@ -64,8 +64,15 @@ feign:
     enabled: true
 ###设置feign客户端超时时间
 ###SpringCloud feign 默认开启支持ribbon
+###Ribbon超时重试次数（总的请求次数）：（MaxAutoRetries+1）*（MaxAutoRetriesNextServer+1）
+###Ribbon没有配置重试时间和次数，默认1S超时，默认重试1次。
+###如果重试期间，调用时间超过了 Hystrix熔断的超时时间，便会立即熔断，进行FallBack。
 ribbon:
   ###指的是建立连接后从服务器读取到可用资源所用的时间。
   ReadTimeout: 2000
   ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
   ConnectTimeout: 2000
+  # 对当前实例的最大重试次数(请求服务超时6s则会再请求一次)
+  #MaxAutoRetries: 2
+  # 切换实例的最大重试次数(如果还失败就切换下
+  #MaxAutoRetriesNextServer: 0

@@ -2,22 +2,18 @@ package com.lipeng.feign;
 
 import com.lipeng.common.ResultVo;
 import com.lipeng.domain.Product;
-import com.lipeng.fallback.ProductFeignSerivceFallbackFactory;
-import java.util.Date;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * @Author: lipeng 910138
  * @Date: 2020/5/19 14:04 fallback fallbackFactory二选一
  */
-@FeignClient(value = "shop-product",
+@FeignClient(value = "shop-product")
         //fallback = ProductFeignSerivceFallback.class,
-        fallbackFactory = ProductFeignSerivceFallbackFactory.class)
+        //fallbackFactory = ProductFeignSerivceFallbackFactory.class)
 public interface ProductFeignSerivce {
 
     @GetMapping("/product/{id}")
